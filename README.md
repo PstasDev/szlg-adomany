@@ -1,36 +1,72 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Szent László Gimnázium - Adományozás
 
-## Getting Started
+A donation website for Szent László Gimnázium (Saint Ladislaus High School) to display information about contributing to school projects.
 
-First, run the development server:
+## Features
+
+- Modern, minimalist design with the school's color palette
+- Responsive layout for mobile and desktop
+- Information about two foundations that support the school
+- Vercel-ready deployment configuration
+
+## Color Palette
+
+- Background: `#FAFAFA` (white)
+- Primary foreground: `#333C3E` (dark gray)
+- Hover/accent: `#A86E43` (brown)
+
+## Fonts
+
+- Body text: Noto Sans
+- Headers: Playfair Display (elegant serif)
+
+## Development
+
+First, install dependencies:
+
+```bash
+npm install
+```
+
+Then, run the development server:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) in your browser.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Logo
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Replace the placeholder logo at `public/logo.svg` with the actual Szent László Gimnázium logo.
 
-## Learn More
+## Deployment on Vercel
 
-To learn more about Next.js, take a look at the following resources:
+1. Push this repository to GitHub
+2. Import the project to Vercel
+3. Add your custom domain `adomany.szlg.info` in the Vercel dashboard:
+   - Go to Project Settings → Domains
+   - Add `adomany.szlg.info`
+   - Configure DNS records as instructed by Vercel
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Domain Configuration
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+The site is configured to run under the `adomany.szlg.info` domain. To set this up in Vercel:
 
-## Deploy on Vercel
+1. Add the domain in Vercel dashboard
+2. Update your DNS records with your domain registrar:
+   - Add a CNAME record pointing `adomany.szlg.info` to `cname.vercel-dns.com`
+   - Or follow Vercel's specific DNS instructions
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Project Structure
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- `app/page.tsx` - Main donation information page
+- `app/layout.tsx` - Root layout with font configuration
+- `app/globals.css` - Global styles and color definitions
+- `public/logo.svg` - School logo (placeholder)
+- `vercel.json` - Vercel deployment configuration
+
+## Future Features
+
+This site is designed to be expanded with functionality to collect promises for contributions towards school projects.
+

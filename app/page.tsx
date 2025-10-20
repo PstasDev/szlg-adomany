@@ -2,102 +2,116 @@ import Image from "next/image";
 
 export default function Home() {
   return (
-    <div className="font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="font-mono list-inside list-decimal text-sm/6 text-center sm:text-left">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] font-mono font-semibold px-1 py-0.5 rounded">
-              app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
-
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
+    <main className="min-h-screen bg-[#FAFAFA]">
+      {/* Header */}
+      <header className="border-b border-[#333C3E]/10">
+        <div className="max-w-4xl mx-auto px-6 py-8 flex items-center gap-6">
+          <div className="flex-shrink-0 text-[#333C3E]">
             <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
+              src="/logo.svg"
+              alt="Szent László Gimnázium"
+              width={80}
+              height={80}
+              priority
+              className="w-16 h-16 md:w-20 md:h-20 text-[#333C3E] fill-[#333C3E]"
             />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+          </div>
+          <div>
+            <h1 className="text-3xl md:text-4xl font-bold text-[#333C3E] font-serif">
+              Szent László Gimnázium
+            </h1>
+            <p className="text-[#333C3E]/70 mt-1">Adományozás</p>
+          </div>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
+      </header>
+
+      {/* Main Content */}
+      <div className="max-w-4xl mx-auto px-6 py-12">
+        {/* Introduction */}
+        <section className="mb-16">
+          <h2 className="text-2xl md:text-3xl font-semibold text-[#333C3E] mb-6 font-serif">
+            Szükségünk van a támogatására!
+          </h2>
+          <p className="text-[#333C3E]/80 text-lg leading-relaxed">
+            Ezen az oldalon a jövőben megismerheti azokat a projekteket, kezdeményezéseket és hiányosságokat intézményünkben, amelyekhez az Ön támogatására is szükség van. Kérjük, addig is fontolja meg, hogy adományával hozzájárul iskolánk fejlődéséhez és diákjaink sikereihez!
+          </p>
+        </section>
+
+        {/* Foundation Cards */}
+        <div className="space-y-8">
+          {/* Foundation General */}
+          <div className="bg-white border border-[#333C3E]/10 rounded-lg p-8 shadow-sm hover:shadow-md transition-shadow">
+            <h3 className="text-xl md:text-2xl font-semibold text-[#333C3E] mb-4 font-serif">
+              &quot;Összefogás a Szent László Gimnáziumért&quot; Alapítvány
+            </h3>
+            <p className="text-[#333C3E]/70 mb-6 italic">
+              Az iskola általános támogatása
+            </p>
+            <div className="space-y-3 text-[#333C3E]/80">
+              <div className="flex flex-col sm:flex-row sm:items-center gap-2">
+                <span className="font-medium min-w-[120px]">Számlaszám:</span>
+                <span className="font-mono text-sm sm:text-base select-all">11710002-20048556</span>
+              </div>
+              <div className="flex flex-col sm:flex-row sm:items-center gap-2">
+                <span className="font-medium min-w-[120px]">Adószám:</span>
+                <span className="font-mono text-sm sm:text-base select-all">18014125-1-42</span>
+              </div>
+              <div className="flex flex-col sm:flex-row sm:items-start gap-2">
+                <span className="font-medium min-w-[120px]">Cím:</span>
+                <span className="text-sm sm:text-base">1102 Budapest, Kőrösi Csoma Sándor út 28.</span>
+              </div>
+            </div>
+          </div>
+
+          {/* Foundation BioszKémia */}
+          <div className="bg-white border border-[#333C3E]/10 rounded-lg p-8 shadow-sm hover:shadow-md transition-shadow">
+            <h3 className="text-xl md:text-2xl font-semibold text-[#333C3E] mb-4 font-serif">
+              Szent László Gimnázium Biológia-Kémia Alapítvány
+            </h3>
+            <p className="text-[#333C3E]/70 mb-6 italic">
+              Az Emelt Szintű Biológia és Kémia Tagozat alapítványa, az iskolai alapítványtól függetlenül működik.
+            </p>
+            <div className="space-y-3 text-[#333C3E]/80">
+              <div className="flex flex-col sm:flex-row sm:items-center gap-2">
+                <span className="font-medium min-w-[120px]">Számlaszám:</span>
+                <span className="font-mono text-sm sm:text-base select-all">11710002-20049791</span>
+              </div>
+              <div className="flex flex-col sm:flex-row sm:items-center gap-2">
+                <span className="font-medium min-w-[120px]">Adószám:</span>
+                <span className="font-mono text-sm sm:text-base select-all">19670326-1-42</span>
+              </div>
+              <div className="flex flex-col sm:flex-row sm:items-start gap-2">
+                <span className="font-medium min-w-[120px]">Cím:</span>
+                <span className="text-sm sm:text-base">1102 Budapest, Kőrösi Csoma Sándor út 28.</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+
+        <section className="mt-16">
+          <h2 className="text-2xl md:text-3xl font-semibold text-[#333C3E] mb-6 font-serif">
+
+            Közlemény rovat</h2>
+          <p className="text-[#333C3E]/80 text-lg leading-relaxed">
+            <ul className="list-disc list-inside space-y-2 ml-4">
+              <li>
+                A közlemény rovatban feltüntetheti, hogy az intézmény mely projektre, munkacsoportra, tagozatra vagy alszervezetre fordítsa az adományozott összeget.
+                <br />
+                <b>&quot;Adomány a(z) [projekt/munkacsoport/tagozat neve] részére&quot;.</b>
+              </li>
+              <li>Amennyiben az adomány közleményében nem tünteti fel, hogy mely projektnek, munkacsoportnak, tagozatnak vagy alszervezetnek szánja az adományt, úgy az adomány általános célokra kerül felhasználásra.</li>
+            </ul>
+          </p>
+        </section>
+      </div>
+
+      {/* Footer */}
+      <footer className="mt-20 border-t border-[#333C3E]/10">
+        <div className="max-w-4xl mx-auto px-6 py-8 text-center text-[#333C3E]/60 text-sm">
+          <p>© {new Date().getFullYear()} Szent László Gimnázium</p>
+        </div>
       </footer>
-    </div>
+    </main>
   );
 }
