@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SZLG Banner Test - External Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            line-height: 1.6;
+        }
+        h1 {
+            color: #333C3E;
+        }
+        .code-block {
+            background: #f4f4f4;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            padding: 15px;
+            margin: 20px 0;
+            overflow-x: auto;
+        }
+        code {
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+        }
+        .note {
+            background: #fff3cd;
+            border-left: 4px solid #ffc107;
+            padding: 12px;
+            margin: 20px 0;
+        }
+    </style>
+    
+    <!-- Include the SZLG donation banner script -->
+    <script src="https:/script.js"></script>
+</head>
+<body>
+    <h1>SZLG Donation Banner - Test Page</h1>
+    
+    <p>This is a test page demonstrating the Szent László Gimnázium donation banner.</p>
+    
+    <h2>How to Use</h2>
+    <p>To add this banner to any website, simply include the following script tag in your HTML <code>&lt;head&gt;</code> section:</p>
+    
+    <div class="code-block">
+        <code>&lt;script src="https://adomany.szlg.info/script.js"&gt;&lt;/script&gt;</code>
+    </div>
+    
+    <h2>Features</h2>
+    <ul>
+        <li><strong>Auto-dismiss with localStorage:</strong> Once dismissed, the banner won't show again on that browser</li>
+        <li><strong>Responsive design:</strong> Adapts to mobile and desktop screens</li>
+        <li><strong>Smooth animations:</strong> Slides down on load, fades out on dismiss</li>
+        <li><strong>Click-through:</strong> Clicking the banner (except the dismiss button) opens adomany.szlg.info</li>
+        <li><strong>Shows tax number:</strong> 18014125-1-42</li>
+        <li><strong>No dependencies:</strong> Pure vanilla JavaScript</li>
+    </ul>
+    
+    <div class="note">
+        <strong>Note:</strong> To test the banner again after dismissing it, clear your browser's localStorage for this domain or open in an incognito/private window.
+    </div>
+    
+    <h2>Test Content</h2>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+    
+    <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+    
+    <h3>Clear localStorage</h3>
+    <p>Click the button below to clear the dismissed state and reload the page to see the banner again:</p>
+    <button onclick="localStorage.removeItem('szlg-donation-banner-dismissed'); location.reload();" style="padding: 10px 20px; font-size: 16px; cursor: pointer; background: #333C3E; color: white; border: none; border-radius: 4px;">
+        Clear & Reload
+    </button>
+</body>
+</html>
