@@ -80,11 +80,11 @@ export async function GET() {
           flex: 1;
           min-width: 0;
         ">
-          <svg id="szlg-banner-logo" width="40" height="40" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="flex-shrink: 0;">
-            <rect width="24" height="24" rx="4" fill="white" fill-opacity="0.15"/>
-            <path d="M12 6L8 10H11V14H13V10H16L12 6Z" fill="white"/>
-            <rect x="7" y="16" width="10" height="2" rx="1" fill="white"/>
-          </svg>
+          <img id="szlg-banner-logo" src="https://adomany.szlg.info/logo.svg" alt="SZLG Logo" width="40" height="40" style="
+            flex-shrink: 0;
+            filter: brightness(0) invert(1);
+            object-fit: contain;
+          " />
           <div style="flex: 1; min-width: 0;">
             <div id="szlg-banner-text" style="
               font-size: 15px;
