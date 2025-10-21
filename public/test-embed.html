@@ -3,7 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SZLG Banner Test - External Page</title>
+    <title>SZLG Banner Teszt - Külső oldalak számára</title>
+    
+    <!-- Highlight.js CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
+    
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -16,15 +20,28 @@
             color: #333C3E;
         }
         .code-block {
-            background: #f4f4f4;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-            padding: 15px;
+            background: #282c34;
+            border: 1px solid #3e4451;
+            border-radius: 6px;
+            padding: 0;
             margin: 20px 0;
+            overflow: hidden;
+        }
+        .code-block pre {
+            margin: 0;
+            padding: 16px;
             overflow-x: auto;
         }
-        code {
+        .code-block code {
+            font-family: 'Fira Code', 'Courier New', monospace;
+            font-size: 14px;
+            line-height: 1.5;
+        }
+        code:not(.code-block code) {
             font-family: 'Courier New', monospace;
+            background: #f4f4f4;
+            padding: 2px 6px;
+            border-radius: 3px;
             font-size: 14px;
         }
         .note {
@@ -37,42 +54,52 @@
     
     <!-- Include the SZLG donation banner script -->
     <script src="https://adomany.szlg.info/script.js"></script>
+    
+    <!-- Highlight.js JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/xml.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            hljs.highlightAll();
+        });
+    </script>
 </head>
 <body>
-    <h1>SZLG Donation Banner - Test Page</h1>
-    
-    <p>This is a test page demonstrating the Szent László Gimnázium donation banner.</p>
-    
-    <h2>How to Use</h2>
-    <p>To add this banner to any website, simply include the following script tag in your HTML <code>&lt;head&gt;</code> section:</p>
-    
+    <h1>SZLG Adományozás Banner - Tesztoldal</h1>
+
+    <p>Ez az oldal a Szent László Gimnázium adományozási bannerének tesztelésére és demonstrálására szolgál.</p>
+
+    <h2>Használat</h2>
+    <p>A banner bármely oldalhoz való hozzáadásához egyszerűen illessze be a következő script taget a HTML <code>&lt;head&gt;</code> szakaszába:</p>
+
     <div class="code-block">
-        <code>&lt;script src="https://adomany.szlg.info/script.js"&gt;&lt;/script&gt;</code>
+        <pre><code class="language-html">&lt;script src="https://adomany.szlg.info/script.js"&gt;&lt;/script&gt;</code></pre>
     </div>
-    
-    <h2>Features</h2>
+
+    <h2>Jellemzők</h2>
     <ul>
-        <li><strong>Auto-dismiss with localStorage:</strong> Once dismissed, the banner won't show again on that browser</li>
-        <li><strong>Responsive design:</strong> Adapts to mobile and desktop screens</li>
-        <li><strong>Smooth animations:</strong> Slides down on load, fades out on dismiss</li>
-        <li><strong>Click-through:</strong> Clicking the banner (except the dismiss button) opens adomany.szlg.info</li>
-        <li><strong>Shows tax number:</strong> 18014125-1-42</li>
-        <li><strong>No dependencies:</strong> Pure vanilla JavaScript</li>
+        <li><strong>Automatikus eltüntetés:</strong> Miután eltüntették, a banner nem jelenik meg újra azon a böngészőn</li>
+        <li><strong>Testreszabható tartalom:</strong> A banner tartalma könnyen testreszabható egy helyen, mivel egy központi CDN. A dizájn és a tartalom is az aktuális igényeknek megfelelően módosítható.</li>
+        <li><strong>Reszponzív dizájn:</strong> Alkalmazkodik a mobil és asztali képernyőkhöz</li>
+        <li><strong>Animációk:</strong> Betöltéskor lefelé csúszik, eltüntetéskor elhalványul</li>
+        <li><strong>Kattintásra való átirányítás:</strong> A bannerre kattintva (a bezáró gomb kivételével) megnyílik az <a href="http://adomany.szlg.info">adomany.szlg.info</a></li>
+        <li><strong>Adószám megjelenítése:</strong> 18014125-1-42</li>
+        <li><strong>Nincs dependencia:</strong> Tiszta vanilla JavaScript</li>
     </ul>
     
     <div class="note">
-        <strong>Note:</strong> To test the banner again after dismissing it, clear your browser's localStorage for this domain or open in an incognito/private window.
+        <strong>Megjegyzés:</strong> A banner egyszeri eltüntetése után a státusz a böngésző <code>localStorage</code> tárolójában kerül mentésre, így újratöltéskor vagy visszatéréskor nem jelenik meg újra. Ha tesztelni szeretné a banner újra megjelenését, törölje a <code>szlg-donation-banner-dismissed</code> kulcsot a <code>localStorage</code>-ból, vagy használjon inkognitó módot.
     </div>
-    
-    <h2>Test Content</h2>
+
+    <h2>Teszt Tartalom</h2>
     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
     
     <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
     
-    <h3>Clear localStorage</h3>
-    <p>Click the button below to clear the dismissed state and reload the page to see the banner again:</p>
-    <button onclick="localStorage.removeItem('szlg-donation-banner-dismissed'); location.reload();" style="padding: 10px 20px; font-size: 16px; cursor: pointer; background: #333C3E; color: white; border: none; border-radius: 4px;">
-        Clear & Reload
+    <h3>localStorage ürítése</h3>
+    <p>Kattintson az alábbi gombra a törléshez és az oldal újratöltéséhez, hogy a banner újra megjelenjen:</p>
+    <button onclick="localStorage.removeItem('szlg-donation-banner-dismissed'); location.reload();" style="padding: 10px 20px; font-size: 16px; cursor: pointer; background: #672929; color: white; border: none; border-radius: 4px;">
+        Törlés és újratöltés
     </button>
 </body>
 </html>

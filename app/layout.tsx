@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Noto_Sans, Playfair_Display } from "next/font/google";
 import "./globals.css";
+import PageTransition from "./components/PageTransition";
 
 const notoSans = Noto_Sans({
   variable: "--font-noto-sans",
@@ -17,6 +18,9 @@ const playfair = Playfair_Display({
 export const metadata: Metadata = {
   title: "Adományozás - Szent László Gimnázium",
   description: "Támogassa a Szent László Gimnázium projektjeit adományával.",
+  icons: {
+    icon: "/logo.svg",
+  },
 };
 
 export default function RootLayout({
@@ -29,7 +33,7 @@ export default function RootLayout({
       <body
         className={`${notoSans.variable} ${playfair.variable} antialiased`}
       >
-        {children}
+        <PageTransition>{children}</PageTransition>
       </body>
     </html>
   );

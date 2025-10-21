@@ -1,29 +1,10 @@
-import Image from "next/image";
+import Header from "./components/Header";
+import Footer from "./components/Footer";
 
 export default function Home() {
   return (
     <main className="min-h-screen bg-[#FAFAFA]">
-      {/* Header */}
-      <header className="border-b border-[#333C3E]/10">
-        <div className="max-w-4xl mx-auto px-6 py-8 flex items-center gap-6">
-          <div className="flex-shrink-0 text-[#333C3E]">
-            <Image
-              src="/logo.svg"
-              alt="Szent László Gimnázium"
-              width={80}
-              height={80}
-              priority
-              className="w-16 h-16 md:w-20 md:h-20 text-[#333C3E] fill-[#333C3E]"
-            />
-          </div>
-          <div>
-            <h1 className="text-3xl md:text-4xl font-bold text-[#333C3E] font-serif">
-              Szent László Gimnázium
-            </h1>
-            <p className="text-[#333C3E]/70 mt-1">Adományozás</p>
-          </div>
-        </div>
-      </header>
+      <Header subtitle="Adományozás" />
 
       {/* Main Content */}
       <div className="max-w-4xl mx-auto px-6 py-12">
@@ -106,12 +87,7 @@ export default function Home() {
         </section>
       </div>
 
-      {/* Footer */}
-      <footer className="mt-20 border-t border-[#333C3E]/10">
-        <div className="max-w-4xl mx-auto px-6 py-8 text-center text-[#333C3E]/60 text-sm">
-          <p>© {new Date().getFullYear()} Szent László Gimnázium</p>
-        </div>
-      </footer>
+      <Footer />
     </main>
   );
 }
