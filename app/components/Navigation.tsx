@@ -8,6 +8,7 @@ export default function Navigation() {
 
   const navItems = [
     { href: '/', label: 'Főoldal' },
+    { href: '/projektek', label: 'Projektek' },
     { href: '/banner', label: 'Banner' },
   ];
 
