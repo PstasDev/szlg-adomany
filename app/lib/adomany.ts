@@ -8,7 +8,7 @@ import type {
 
 const API_BASE = (
   process.env.NEXT_PUBLIC_ADOMANY_API_BASE ||
-  'http://localhost:8000/adomany/api'
+  'https://ws.szlg.info/adomany/api'
 ).replace(/\/$/, '');
 
 async function request<T>(
