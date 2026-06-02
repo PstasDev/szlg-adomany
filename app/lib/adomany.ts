@@ -15,13 +15,23 @@ async function request<T>(
   path: string,
   init?: RequestInit,
 ): Promise<T> {
-  const res = await fetch(`${API_BASE}${path}`, {
-    headers: {
-      'Content-Type': 'application/json',
-      ...(init?.headers || {}),
-    },
-    ...init,
-  });
+  const url = `${API_BASE}${path}`;
+  let res: Response;
+  try {
+    res = await fetch(url, {
+      headers: {
+        'Content-Type': 'application/json',
+        ...(init?.headers || {}),
+      },
+      ...init,
+    });
+  } catch (e) {
+    // undici "fetch failed" hides the real reason in `cause`. Surface it.
+    const cause = (e as { cause?: { code?: string; message?: string } }).cause;
+    const reason =
+      cause?.code || cause?.message || (e as Error).message || 'unknown';
+    throw new Error(`Adomány API elérhetetlen (${url}): ${reason}`);
+  }
   if (!res.ok) {
     let detail: unknown;
     try {
