@@ -8,25 +8,28 @@ import type { DonationStatus } from '../../lib/adomany-types';
 export const dynamic = 'force-dynamic';
 
 interface PageProps {
-  searchParams: Promise<{ session_id?: string }>;
+  searchParams: Promise<{ paymentId?: string; session_id?: string }>;
 }
 
 export const metadata = {
   title: 'Köszönjük az adományát - Szent László Gimnázium',
 };
 
-async function fetchStatus(sessionId?: string): Promise<DonationStatus | null> {
-  if (!sessionId) return null;
+async function fetchStatus(paymentId?: string): Promise<DonationStatus | null> {
+  if (!paymentId) return null;
   try {
-    return await getDonationStatus(sessionId);
+    return await getDonationStatus(paymentId);
   } catch {
     return null;
   }
 }
 
 export default async function SuccessPage({ searchParams }: PageProps) {
-  const { session_id } = await searchParams;
-  const status = await fetchStatus(session_id);
+  const params = await searchParams;
+  // Barion appends ?paymentId=... to the RedirectUrl. Keep the old
+  // session_id fallback so any in-flight Stripe links still work.
+  const paymentId = params.paymentId ?? params.session_id;
+  const status = await fetchStatus(paymentId);
 
   return (
     <main className="min-h-screen bg-[#FAFAFA]">

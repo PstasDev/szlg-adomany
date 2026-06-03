@@ -228,7 +228,7 @@ export default function DonateForm({ projectSlug, projectName }: Props) {
       </button>
 
       <p className="text-xs text-[#333C3E]/50 text-center">
-        A fizetést a Stripe biztonságos felületén bonyolítjuk.
+        A fizetést a Barion biztonságos felületén bonyolítjuk.
       </p>
     </form>
   );

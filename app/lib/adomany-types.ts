@@ -78,7 +78,7 @@ export interface DonationCreatePayload {
 
 export interface DonationCreateResponse {
   donation_id: number;
-  session_id: string;
+  payment_id: string;
   checkout_url: string;
 }
 
