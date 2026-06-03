@@ -9,20 +9,13 @@ import type {
   Relationship,
 } from '../../lib/adomany-types';
 
-// Stripe Buy Button is a custom element; declare it for TS/JSX.
-declare global {
-  namespace JSX {
-    interface IntrinsicElements {
-      'stripe-buy-button': React.DetailedHTMLProps<
-        React.HTMLAttributes<HTMLElement> & {
-          'buy-button-id': string;
-          'publishable-key': string;
-        },
-        HTMLElement
-      >;
-    }
-  }
-}
+// Stripe Buy Button is a custom element; cast to a typed component for JSX.
+type StripeBuyButtonProps = React.HTMLAttributes<HTMLElement> & {
+  'buy-button-id': string;
+  'publishable-key': string;
+};
+const StripeBuyButton =
+  'stripe-buy-button' as unknown as React.FC<StripeBuyButtonProps>;
 
 const STRIPE_PUBLISHABLE_KEY =
   process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY ?? '';
@@ -262,7 +255,7 @@ export default function DonateForm({ projectSlug, projectName }: Props) {
             strategy="afterInteractive"
           />
           <div className="flex justify-center">
-            <stripe-buy-button
+            <StripeBuyButton
               buy-button-id={STRIPE_BUY_BUTTON_ID}
               publishable-key={STRIPE_PUBLISHABLE_KEY}
             />
