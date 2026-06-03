@@ -1,7 +1,9 @@
 'use client';
 
+import Link from 'next/link';
 import { useState } from 'react';
 
+import PaymentMethods from '../../components/PaymentMethods';
 import { createDonation, formatHuf } from '../../lib/adomany';
 import type {
   DonationType,
@@ -34,6 +36,7 @@ export default function DonateForm({ projectSlug, projectName }: Props) {
   const [studentName, setStudentName] = useState('');
   const [allowThanks, setAllowThanks] = useState(false);
   const [message, setMessage] = useState('');
+  const [acceptedTerms, setAcceptedTerms] = useState(false);
   const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
@@ -47,6 +50,13 @@ export default function DonateForm({ projectSlug, projectName }: Props) {
 
     if (effectiveAmount < 100) {
       setError('Az adomány összege legalább 100 Ft kell legyen.');
+      return;
+    }
+
+    if (!acceptedTerms) {
+      setError(
+        'Az adományozáshoz el kell fogadnia az Általános Szerződési Feltételeket és az Adatvédelmi Tájékoztatót.',
+      );
       return;
     }
 
@@ -228,9 +238,47 @@ export default function DonateForm({ projectSlug, projectName }: Props) {
         </div>
       )}
 
+      <div
+        className={`rounded p-3 border text-sm transition-colors ${
+          acceptedTerms
+            ? 'border-[#333C3E]/15 bg-white'
+            : 'border-amber-300 bg-amber-50'
+        }`}
+      >
+        <label className="flex items-start gap-2">
+          <input
+            type="checkbox"
+            checked={acceptedTerms}
+            onChange={(e) => setAcceptedTerms(e.target.checked)}
+            className="mt-1"
+            required
+            aria-required
+          />
+          <span>
+            Elolvastam és elfogadom az{' '}
+            <Link
+              href="/aszf"
+              target="_blank"
+              className="underline font-medium"
+            >
+              Általános Szerződési Feltételeket
+            </Link>{' '}
+            és az{' '}
+            <Link
+              href="/adatvedelem"
+              target="_blank"
+              className="underline font-medium"
+            >
+              Adatvédelmi Tájékoztatót
+            </Link>
+            .
+          </span>
+        </label>
+      </div>
+
       <button
         type="submit"
-        disabled={submitting || effectiveAmount < 100}
+        disabled={submitting || effectiveAmount < 100 || !acceptedTerms}
         className="w-full bg-[#333C3E] hover:bg-[#333C3E]/90 disabled:opacity-50 disabled:cursor-not-allowed text-white font-medium px-4 py-3 rounded transition-colors"
       >
         {submitting
@@ -243,6 +291,8 @@ export default function DonateForm({ projectSlug, projectName }: Props) {
       <p className="text-xs text-[#333C3E]/50 text-center">
         A fizetést a Barion biztonságos felületén bonyolítjuk.
       </p>
+
+      <PaymentMethods className="pt-2" />
     </form>
   );
 }

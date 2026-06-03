@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Noto_Sans, Playfair_Display } from "next/font/google";
 import "./globals.css";
+import BarionPixel from "./components/BarionPixel";
 import PageTransition from "./components/PageTransition";
 
 const notoSans = Noto_Sans({
@@ -33,6 +34,7 @@ export default function RootLayout({
       <body
         className={`${notoSans.variable} ${playfair.variable} antialiased`}
       >
+        <BarionPixel />
         <PageTransition>{children}</PageTransition>
       </body>
       <script defer src="https://node.szlg.info/__szlg/motd.js"></script> 
