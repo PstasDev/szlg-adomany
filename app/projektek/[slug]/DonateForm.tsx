@@ -67,8 +67,21 @@ export default function DonateForm({ projectSlug, projectName }: Props) {
       });
       window.location.href = response.checkout_url;
     } catch (e) {
-      const msg = e instanceof Error ? e.message : 'Ismeretlen hiba';
-      setError(msg);
+      const err = e as Error & {
+        detail?: {
+          detail?: string;
+          barion_error?: string;
+          barion_errors?: { ErrorCode?: string; Title?: string; Description?: string }[];
+        };
+      };
+      const first = err.detail?.barion_errors?.[0];
+      const apiMsg =
+        (first && [first.Title, first.Description].filter(Boolean).join(' – ')) ||
+        err.detail?.barion_error ||
+        err.detail?.detail ||
+        err.message ||
+        'Ismeretlen hiba';
+      setError(apiMsg);
       setSubmitting(false);
     }
   };
