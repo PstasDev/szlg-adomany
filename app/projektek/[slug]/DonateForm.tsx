@@ -1,5 +1,6 @@
 'use client';
 
+import Script from 'next/script';
 import { useState } from 'react';
 
 import { createDonation, formatHuf } from '../../lib/adomany';
@@ -7,6 +8,26 @@ import type {
   DonationType,
   Relationship,
 } from '../../lib/adomany-types';
+
+// Stripe Buy Button is a custom element; declare it for TS/JSX.
+declare global {
+  namespace JSX {
+    interface IntrinsicElements {
+      'stripe-buy-button': React.DetailedHTMLProps<
+        React.HTMLAttributes<HTMLElement> & {
+          'buy-button-id': string;
+          'publishable-key': string;
+        },
+        HTMLElement
+      >;
+    }
+  }
+}
+
+const STRIPE_PUBLISHABLE_KEY =
+  process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY ?? '';
+const STRIPE_BUY_BUTTON_ID =
+  process.env.NEXT_PUBLIC_STRIPE_BUY_BUTTON_ID ?? '';
 
 const PRESET_AMOUNTS = [1000, 5000, 10000, 25000];
 
@@ -230,6 +251,24 @@ export default function DonateForm({ projectSlug, projectName }: Props) {
       <p className="text-xs text-[#333C3E]/50 text-center">
         A fizetést a Stripe biztonságos felületén bonyolítjuk.
       </p>
+
+      {STRIPE_BUY_BUTTON_ID && STRIPE_PUBLISHABLE_KEY && (
+        <div className="pt-4 border-t border-[#333C3E]/10">
+          <p className="text-xs text-[#333C3E]/60 text-center mb-3">
+            Vagy adományozz egy előre meghatározott összeggel:
+          </p>
+          <Script
+            src="https://js.stripe.com/v3/buy-button.js"
+            strategy="afterInteractive"
+          />
+          <div className="flex justify-center">
+            <stripe-buy-button
+              buy-button-id={STRIPE_BUY_BUTTON_ID}
+              publishable-key={STRIPE_PUBLISHABLE_KEY}
+            />
+          </div>
+        </div>
+      )}
     </form>
   );
 }
