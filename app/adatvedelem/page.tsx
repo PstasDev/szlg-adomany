@@ -25,7 +25,7 @@ export default function PrivacyPage() {
           <h2 className="text-xl font-serif font-semibold">1. Adatkezelő</h2>
           <ul className="list-disc pl-6 space-y-1">
             <li>
-              <strong>Név:</strong> "Összefogás a Szent László Gimnáziumért" Alapítvány
+              <strong>Név:</strong> &bdquo;Összefogás a Szent László Gimnáziumért&rdquo; Alapítvány
             </li>
             <li>
               <strong>Székhely:</strong> 1102 Budapest, Kőrösi Csoma sétány 28-34.
