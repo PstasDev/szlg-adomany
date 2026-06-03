@@ -74,10 +74,10 @@ export async function createDonation(
 }
 
 export async function getDonationStatus(
-  sessionId: string,
+  paymentId: string,
 ): Promise<DonationStatus> {
   return request<DonationStatus>(
-    `/donations/${encodeURIComponent(sessionId)}/status/`,
+    `/donations/${encodeURIComponent(paymentId)}/status/`,
   );
 }
 
