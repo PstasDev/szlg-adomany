@@ -81,6 +81,15 @@ export async function getDonationStatus(
   );
 }
 
+export async function cancelDonation(
+  paymentId: string,
+): Promise<DonationStatus> {
+  return request<DonationStatus>(
+    `/donations/${encodeURIComponent(paymentId)}/cancel/`,
+    { method: 'POST' },
+  );
+}
+
 export function formatHuf(amount: number): string {
   return new Intl.NumberFormat('hu-HU').format(amount) + ' Ft';
 }

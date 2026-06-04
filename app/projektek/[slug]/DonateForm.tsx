@@ -232,7 +232,7 @@ export default function DonateForm({ projectSlug, projectName }: Props) {
               value={message}
               onChange={(e) => setMessage(e.target.value)}
               rows={3}
-              placeholder="Pl. „Hajrá 12.B!”"
+              placeholder="Pl. „Csak az F!”"
               className="mt-1 w-full px-3 py-2 border border-[#333C3E]/20 rounded text-sm"
             />
           </label>
