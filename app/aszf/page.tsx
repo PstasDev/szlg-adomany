@@ -25,26 +25,24 @@ export default function AszfPage() {
           <h2 className="text-xl font-serif font-semibold">1. Szolgáltató adatai</h2>
           <p>
             Jelen weboldal (a továbbiakban: „Weboldal”) üzemeltetője és az
-            adományok kedvezményezettje:
+            adományok kezelője:
           </p>
           <ul className="list-disc pl-6 space-y-1">
             <li>
-              <strong>Név:</strong> &bdquo;Összefogás a Szent László Gimnáziumért&rdquo; Alapítvány
+              <strong>Megnevezés:</strong> Középiskolai Informatikai és Tömegkommunikációs Egyesület
+              (rövidített név: <strong>KIT-egylet</strong>)
             </li>
             <li>
-              <strong>Székhely:</strong> 1102 Budapest, Kőrösi Csoma sétány 28-34. 
+              <strong>Székhely:</strong> 1105 Budapest, Veszprémi utca 3. II/23.
             </li>
             <li>
-              <strong>Adószám:</strong> 18014125-1-42
+              <strong>Adószám:</strong> 18989982-1-42
             </li>
             <li>
               <strong>E-mail:</strong>{' '}
               <a className="underline" href="mailto:admin@kitegylet.hu">
-                titkarsag@szlgbp.hu
+                admin@kitegylet.hu
               </a>
-            </li>
-            <li>
-              <strong>Telefon:</strong> +36 1 262 3599
             </li>
           </ul>
         </section>
