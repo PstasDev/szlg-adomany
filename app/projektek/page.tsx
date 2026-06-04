@@ -42,7 +42,7 @@ export default async function ProjectsPage() {
           </h2>
           <p className="text-[#333C3E]/80 text-lg leading-relaxed">
             Az alábbi projektek jelenleg gyűjtenek adományokat. Kattintson egy
-            kártyára a részletekért és az online támogatáshoz.
+            kártyára a részletekért és az online támogatáshoz. Ha az adott projekten feltüntetett összeg nem éri el a kitűzött célt, a projekt céldátumáig, a felajánlott adományok átcsoportosításra kerülnek egy másik, hasonló célú projekthez, amelynek támogatása szintén szükséges és megvalósíthatóvá válik ezáltal.
           </p>
         </section>
 
