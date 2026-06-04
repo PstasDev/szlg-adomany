@@ -39,6 +39,9 @@ export default function AszfPage() {
               <strong>Adószám:</strong> 18989982-1-42
             </li>
             <li>
+              <strong>Cégjegyzékszám:</strong> 01-02-0016883
+            </li>
+            <li>
               <strong>E-mail:</strong>{' '}
               <a className="underline" href="mailto:admin@kitegylet.hu">
                 admin@kitegylet.hu
