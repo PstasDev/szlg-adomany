@@ -19,6 +19,11 @@ async function request<T>(
   let res: Response;
   try {
     res = await fetch(url, {
+      // Always hit the origin — project totals / progress_percent change
+      // whenever a donation succeeds, and we don't want the Next data cache
+      // to serve a stale value (which previously caused /projektek/ and
+      // /projektek/<slug> to show different percentages).
+      cache: 'no-store',
       headers: {
         'Content-Type': 'application/json',
         ...(init?.headers || {}),

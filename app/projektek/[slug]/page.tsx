@@ -6,7 +6,10 @@ import Footer from '../../components/Footer';
 import { getProject, formatHuf } from '../../lib/adomany';
 import DonateForm from './DonateForm';
 
-export const revalidate = 60;
+// Keep the detail page dynamic so progress matches the list view in real
+// time after donations succeed (the list is also force-dynamic).
+export const dynamic = 'force-dynamic';
+export const revalidate = 0;
 
 interface PageProps {
   params: Promise<{ slug: string }>;

@@ -4,7 +4,11 @@ import { listProjects } from '../lib/adomany';
 import type { ProjectListItem } from '../lib/adomany-types';
 import ProjectsBrowser from './ProjectsBrowser';
 
-export const revalidate = 60; // 1 minute ISR
+// Always render fresh so progress_percent / current_amount stays in sync
+// with the detail page (which is also dynamic). Otherwise ISR would let
+// the list show a stale percentage for up to a minute after a donation.
+export const dynamic = 'force-dynamic';
+export const revalidate = 0;
 
 export const metadata = {
   title: 'Projektek - Szent László Gimnázium',
