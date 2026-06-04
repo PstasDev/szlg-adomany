@@ -153,14 +153,15 @@ export default function DonateForm({ projectSlug, projectName }: Props) {
         </div>
       </div>
 
-      <details className="border border-[#333C3E]/10 rounded p-3">
+      <details className="border border-[#333C3E]/10 rounded p-3" open>
         <summary className="cursor-pointer text-sm font-medium text-[#333C3E]/80">
           Adományozó adatai (opcionális)
         </summary>
         <div className="mt-3 space-y-3">
           <p className="text-xs text-[#333C3E]/60">
             Adatait kizárólag arra használjuk, hogy megköszönjük az
-            adományát. Az adományozás teljesen anonim is lehet.
+            adományát. Az adományozás teljesen anonim is lehet — minden
+            mező opcionális.
           </p>
 
           <label className="block text-sm">
@@ -178,17 +179,20 @@ export default function DonateForm({ projectSlug, projectName }: Props) {
             </select>
           </label>
 
-          {needsStudentName && (
-            <label className="block text-sm">
-              Diák neve
-              <input
-                type="text"
-                value={studentName}
-                onChange={(e) => setStudentName(e.target.value)}
-                className="mt-1 w-full px-3 py-2 border border-[#333C3E]/20 rounded text-sm"
-              />
-            </label>
-          )}
+          <label className="block text-sm">
+            Diák neve
+            <input
+              type="text"
+              value={studentName}
+              onChange={(e) => setStudentName(e.target.value)}
+              placeholder={
+                needsStudentName
+                  ? 'Pl. Kovács Anna'
+                  : 'Pl. Kovács Anna (ha valakit szeretne megnevezni)'
+              }
+              className="mt-1 w-full px-3 py-2 border border-[#333C3E]/20 rounded text-sm"
+            />
+          </label>
 
           <label className="block text-sm">
             Név
@@ -196,6 +200,7 @@ export default function DonateForm({ projectSlug, projectName }: Props) {
               type="text"
               value={name}
               onChange={(e) => setName(e.target.value)}
+              placeholder="Az Ön neve"
               className="mt-1 w-full px-3 py-2 border border-[#333C3E]/20 rounded text-sm"
             />
           </label>
@@ -206,6 +211,7 @@ export default function DonateForm({ projectSlug, projectName }: Props) {
               type="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
+              placeholder="pelda@email.hu"
               className="mt-1 w-full px-3 py-2 border border-[#333C3E]/20 rounded text-sm"
             />
           </label>
@@ -226,6 +232,7 @@ export default function DonateForm({ projectSlug, projectName }: Props) {
               value={message}
               onChange={(e) => setMessage(e.target.value)}
               rows={3}
+              placeholder="Pl. „Hajrá 12.B!”"
               className="mt-1 w-full px-3 py-2 border border-[#333C3E]/20 rounded text-sm"
             />
           </label>
