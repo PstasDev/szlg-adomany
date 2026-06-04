@@ -1,4 +1,5 @@
 import { notFound } from 'next/navigation';
+import Link from 'next/link';
 
 import Header from '../../components/Header';
 import Footer from '../../components/Footer';
@@ -26,19 +27,65 @@ export async function generateMetadata({ params }: PageProps) {
 
 export default async function ProjectDetailPage({ params }: PageProps) {
   const { slug } = await params;
+
   let project;
   try {
     project = await getProject(slug);
   } catch (e) {
-    if (e && typeof e === 'object' && 'status' in e && (e as { status: number }).status === 404) {
+    // 404 -> Next's not-found page
+    if (
+      e &&
+      typeof e === 'object' &&
+      'status' in e &&
+      (e as { status: number }).status === 404
+    ) {
       notFound();
     }
-    throw e;
+    // Any other failure (network, 5xx from the API, etc.): render a
+    // friendly error UI instead of letting the request 500.
+    const message = e instanceof Error ? e.message : 'Ismeretlen hiba';
+    return (
+      <main className="min-h-screen bg-[#FAFAFA]">
+        <Header subtitle="Projekt" />
+        <div className="max-w-2xl mx-auto px-6 py-16">
+          <div className="bg-white border border-[#333C3E]/10 rounded-lg p-10 shadow-sm text-center space-y-4">
+            <h1 className="text-2xl md:text-3xl font-semibold text-[#333C3E] font-serif">
+              Nem sikerült betölteni a projektet
+            </h1>
+            <p className="text-[#333C3E]/70">
+              Az adatszerver pillanatnyilag nem érhető el. Kérjük, próbálja
+              újra néhány perc múlva.
+            </p>
+            <p className="text-xs text-[#333C3E]/40">{message}</p>
+            <div className="flex flex-col sm:flex-row gap-3 justify-center pt-2">
+              <Link
+                href="/projektek"
+                className="bg-[#333C3E] hover:bg-[#333C3E]/90 text-white font-medium px-5 py-2.5 rounded transition-colors"
+              >
+                Vissza a projektekhez
+              </Link>
+              <Link
+                href="/"
+                className="border border-[#333C3E]/20 hover:border-[#333C3E]/50 text-[#333C3E] font-medium px-5 py-2.5 rounded transition-colors"
+              >
+                Főoldal
+              </Link>
+            </div>
+          </div>
+        </div>
+        <Footer />
+      </main>
+    );
   }
 
-  const cover =
-    project.images.find((i) => i.is_cover) || project.images[0] || null;
-  const others = project.images.filter((i) => i !== cover);
+  const images = Array.isArray(project.images) ? project.images : [];
+  const cover = images.find((i) => i.is_cover) || images[0] || null;
+  const others = images.filter((i) => i !== cover);
+
+  const pct = Math.max(
+    0,
+    Math.min(100, Number(project.progress_percent) || 0),
+  );
 
   return (
     <main className="min-h-screen bg-[#FAFAFA]">
@@ -109,14 +156,13 @@ export default async function ProjectDetailPage({ params }: PageProps) {
                 <div
                   className="absolute inset-y-0 left-0 bg-[#333C3E] rounded-full transition-[width] duration-500"
                   style={{
-                    width: `${Math.max(0, Math.min(100, Number(project.progress_percent) || 0))}%`,
-                    minWidth:
-                      (Number(project.progress_percent) || 0) > 0 ? '0.5rem' : 0,
+                    width: `${pct}%`,
+                    minWidth: pct > 0 ? '0.5rem' : 0,
                   }}
                 />
               </div>
               <div className="text-xs text-[#333C3E]/60 mb-6">
-                {Math.max(0, Math.min(100, Number(project.progress_percent) || 0))}% teljesítve
+                {pct}% teljesítve
               </div>
 
               <DonateForm projectSlug={project.slug} projectName={project.nev} />
