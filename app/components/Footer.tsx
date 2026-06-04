@@ -36,6 +36,10 @@ export default function Footer() {
         </nav>
 
         <p className="text-center text-[#333C3E]/60">
+          Ezt az applikációt (is) a informatika tagozatos diákok készítették.
+        </p>
+
+        <p className="text-center text-[#333C3E]/60">
           © {new Date().getFullYear()} Szent László Gimnázium
         </p>
       </div>
