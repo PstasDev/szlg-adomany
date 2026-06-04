@@ -96,11 +96,7 @@ export default function AszfPage() {
             Barion-egyenlegén történő jóváírásával bekövetkezik.
           </p>
           <p>
-            Ha az adott projekten feltüntetett összeg nem éri el a kitűzött
-            célt a projekt céldátumáig, a felajánlott adományok
-            átcsoportosításra kerülnek egy másik, hasonló célú projekthez,
-            amelynek támogatása szintén szükséges és megvalósíthatóvá válik
-            ezáltal. Az adományozó az adomány leadásával ehhez kifejezetten
+            Ha az adott projekten feltüntetett összeg nem éri el a kitűzött célt a projekt céldátumáig, a felajánlott adományok átcsoportosításra kerülnek egy másik, hasonló célú projekthez, amelynek támogatása szintén szükséges és megvalósíthatóvá válik ezáltal. Az adományozó az adomány leadásával ehhez kifejezetten
             hozzájárul.
           </p>
         </section>
