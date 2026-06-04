@@ -90,6 +90,15 @@ export async function cancelDonation(
   );
 }
 
+export async function confirmDonation(
+  paymentId: string,
+): Promise<DonationStatus> {
+  return request<DonationStatus>(
+    `/donations/${encodeURIComponent(paymentId)}/confirm/`,
+    { method: 'POST' },
+  );
+}
+
 export function formatHuf(amount: number): string {
   return new Intl.NumberFormat('hu-HU').format(amount) + ' Ft';
 }

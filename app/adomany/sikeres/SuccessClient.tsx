@@ -6,7 +6,7 @@ import { useSearchParams } from 'next/navigation';
 
 import Header from '../../components/Header';
 import Footer from '../../components/Footer';
-import { getDonationStatus, formatHuf } from '../../lib/adomany';
+import { confirmDonation, formatHuf } from '../../lib/adomany';
 import type { DonationStatus } from '../../lib/adomany-types';
 
 export default function SuccessClient() {
@@ -16,14 +16,16 @@ export default function SuccessClient() {
 
   // The user reaching this page already implies a successful redirect from
   // the Barion gateway, so we always show the "thank you" confirmation
-  // immediately. We optionally fetch the donation details once in the
-  // background, purely to show the amount / type — never to gate the UI.
+  // immediately. We still ping the backend so it can re-sync the donation's
+  // state from Barion and persist it (in case the server-to-server
+  // callback hasn't arrived yet). The confirmation UI never depends on
+  // the response.
   const [details, setDetails] = useState<DonationStatus | null>(null);
 
   useEffect(() => {
     if (!paymentId) return;
     let cancelled = false;
-    getDonationStatus(paymentId)
+    confirmDonation(paymentId)
       .then((data) => {
         if (!cancelled) setDetails(data);
       })
