@@ -47,6 +47,13 @@ export default function AszfPage() {
                 admin@kitegylet.hu
               </a>
             </li>
+            <li>
+              <strong>Telefon:</strong>{' '}
+              <a className="underline" href="tel:+36208225702">
+                +36 20 822 5702
+              </a>
+            </li>
+            
           </ul>
         </section>
 
