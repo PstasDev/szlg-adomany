@@ -23,7 +23,7 @@ export default function Header({ subtitle = 'Adományozás' }: HeaderProps) {
           </div>
           <div>
             <h1 className="text-3xl md:text-4xl font-bold text-[#333C3E] font-serif">
-              Szent László Gimnázium
+              KIT-egylet
             </h1>
             <p className="text-[#333C3E]/70 mt-1">{subtitle}</p>
           </div>
