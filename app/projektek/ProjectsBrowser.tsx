@@ -112,7 +112,12 @@ export default function ProjectsBrowser({ projects }: Props) {
         </div>
       ) : (
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          {filtered.map((p) => (
+          {filtered.map((p) => {
+            const pct = Math.max(
+              0,
+              Math.min(100, Number(p.progress_percent) || 0),
+            );
+            return (
             <Link
               key={p.id}
               href={`/projektek/${p.slug}`}
@@ -151,15 +156,21 @@ export default function ProjectsBrowser({ projects }: Props) {
                       Cél: {formatHuf(p.goal_amount)}
                     </span>
                   </div>
-                  <div className="h-2 bg-[#333C3E]/10 rounded-full overflow-hidden">
+                  <div
+                    role="progressbar"
+                    aria-valuenow={pct}
+                    aria-valuemin={0}
+                    aria-valuemax={100}
+                    className="relative h-2 w-full bg-[#333C3E]/10 rounded-full overflow-hidden"
+                  >
                     <div
-                      className="h-full bg-[#333C3E] transition-all"
-                      style={{ width: `${p.progress_percent}%` }}
+                      className="absolute inset-y-0 left-0 bg-[#333C3E] rounded-full transition-[width] duration-500"
+                      style={{ width: `${pct}%`, minWidth: pct > 0 ? '0.5rem' : 0 }}
                     />
                   </div>
                   <div className="flex items-center justify-between pt-1">
                     <span className="text-xs text-[#333C3E]/60">
-                      {p.progress_percent}% teljesítve
+                      {pct}% teljesítve
                     </span>
                     <span className="text-sm font-medium text-[#333C3E] group-hover:translate-x-0.5 transition-transform">
                       Részletek &amp; támogatás →
@@ -168,7 +179,8 @@ export default function ProjectsBrowser({ projects }: Props) {
                 </div>
               </div>
             </Link>
-          ))}
+            );
+          })}
         </div>
       )}
     </div>

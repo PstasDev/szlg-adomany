@@ -105,14 +105,18 @@ export default async function ProjectDetailPage({ params }: PageProps) {
                   cél: {formatHuf(project.goal_amount)}
                 </div>
               </div>
-              <div className="h-2 bg-[#333C3E]/10 rounded-full overflow-hidden mb-2">
+              <div className="h-2 bg-[#333C3E]/10 rounded-full overflow-hidden mb-2 relative">
                 <div
-                  className="h-full bg-[#333C3E] transition-all"
-                  style={{ width: `${project.progress_percent}%` }}
+                  className="absolute inset-y-0 left-0 bg-[#333C3E] rounded-full transition-[width] duration-500"
+                  style={{
+                    width: `${Math.max(0, Math.min(100, Number(project.progress_percent) || 0))}%`,
+                    minWidth:
+                      (Number(project.progress_percent) || 0) > 0 ? '0.5rem' : 0,
+                  }}
                 />
               </div>
               <div className="text-xs text-[#333C3E]/60 mb-6">
-                {project.progress_percent}% teljesítve
+                {Math.max(0, Math.min(100, Number(project.progress_percent) || 0))}% teljesítve
               </div>
 
               <DonateForm projectSlug={project.slug} projectName={project.nev} />
