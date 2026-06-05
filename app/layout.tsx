@@ -37,7 +37,7 @@ export default function RootLayout({
         <BarionPixel />
         <PageTransition>{children}</PageTransition>
       </body>
-      <script defer src="https://node.szlg.info/__szlg/motd.js"></script> 
+
     </html>
   );
 }
