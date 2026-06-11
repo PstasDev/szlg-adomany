@@ -1,37 +1,27 @@
 /**
- * Accepted payment methods strip required by Barion to display on every
- * checkout / donation page.
+ * Official Barion Smart Payment Banner (light mode) shown next to every
+ * checkout / donation entry point, per the Barion Smart Payment Banner
+ * Developer Guidelines (Oct 2025).
  *
- * Uses plain <img> tags (instead of next/image) so that the browser preserves
- * the intrinsic aspect ratio of each SVG/PNG — next/image was occasionally
- * squishing the accepted-cards strip horizontally.
+ * The banner is the unmodified official asset bundled in `public/`. We render
+ * it with a plain <img> tag so the browser preserves its intrinsic aspect
+ * ratio (no stretching, cropping, or distortion), and we let it scale down on
+ * smaller viewports while keeping the required ≥8px of breathing room.
  */
 export default function PaymentMethods({ className = '' }: { className?: string }) {
   return (
     <div
-      className={`flex flex-wrap items-center justify-center gap-x-4 gap-y-3 ${className}`}
+      className={`flex justify-center p-2 ${className}`}
       aria-label="Elfogadott fizetési módok"
     >
-      {/* eslint-disable @next/next/no-img-element */}
+      {/* eslint-disable-next-line @next/next/no-img-element */}
       <img
-        src="https://secure.barion.com/Content/images/paymentgateway/barion-blue.svg"
-        alt="Barion"
-        style={{ height: '28px', width: 'auto' }}
-        className="block"
+        src="/barion-smart-banner-light.svg"
+        alt="Barion – elfogadott fizetési módok: Visa, Mastercard, Maestro, American Express, Apple Pay, Google Pay"
+        width={567}
+        height={108}
+        className="block h-auto w-full max-w-[567px]"
       />
-      <img
-        src="https://secure.barion.com/Content/images/paymentgateway/accepted-cards-2025.png"
-        alt="Elfogadott kártyák: Visa, Mastercard, Maestro, American Express"
-        style={{ height: '28px', width: 'auto' }}
-        className="block"
-      />
-      <img
-        src="https://secure.barion.com/Content/images/paymentgateway/google-pay.svg"
-        alt="Google Pay"
-        style={{ height: '28px', width: 'auto' }}
-        className="block"
-      />
-      {/* eslint-enable @next/next/no-img-element */}
     </div>
   );
 }
