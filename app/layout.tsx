@@ -44,7 +44,7 @@ export default function RootLayout({
             scriptElement.async = true;
             scriptElement.src = 'https://pixel.barion.com/bp.js';
             firstScript.parentNode.insertBefore(scriptElement, firstScript);
-            window['barion_pixel_id'] = 'BP-0000000000-00';            
+            window['barion_pixel_id'] = 'BPT-H9scvIYQCp-73';            
 
             // Send init event
             bp('init', 'addBarionPixelId', window['barion_pixel_id']);
